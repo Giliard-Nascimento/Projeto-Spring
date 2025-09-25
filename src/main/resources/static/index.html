@@ -1,0 +1,90 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina de automoveis</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="brand">
+            <a href="/" class="logo" aria-label="Pagina inicial">
+                <svg width="40" height="40" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="car-body" x1="50" y1="50" x2="150" y2="150" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#0d47a1"/>
+                            <stop offset="1" stop-color="#1976d2"/>
+                        </linearGradient>
+                        <linearGradient id="car-window" x1="70" y1="70" x2="130" y2="130" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#42a5f5"/>
+                            <stop offset="1" stop-color="#bbdefb"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M183.333 108.333C187.752 108.333 191.354 111.762 191.645 116.162L199.423 127.838C200.583 129.584 199.643 132.008 197.749 132.598L180.167 137.5V158.333C180.167 162.936 176.436 166.667 171.833 166.667H160.167C155.564 166.667 151.833 162.936 151.833 158.333V150H48.1667V158.333C48.1667 162.936 44.4358 166.667 39.8333 166.667H28.1667C23.5642 166.667 19.8333 162.936 19.8333 158.333V137.5L2.25075 132.598C0.356875 132.008 -0.583042 129.584 0.577292 127.838L8.35517 116.162C8.64617 111.762 12.2477 108.333 16.6667 108.333H30.1667L54.7917 64.5833C58.4167 58.5833 65.5 54.1667 73.5 54.1667H126.5C134.5 54.1667 141.583 58.5833 145.208 64.5833L169.833 108.333H183.333Z" fill="url(#car-body)"/>
+                    <path d="M138.5 70.8333L126.5 54.1667H73.5L61.5 70.8333H138.5Z" fill="#0d47a1"/>
+                    <path d="M135.667 79.1667L76.4167 79.1667C70.0833 79.1667 65.5 83.75 65.5 90.0833V108.333H144.833V90.0833C144.833 83.75 142 79.1667 135.667 79.1667Z" fill="url(#car-window)"/>
+                    <circle cx="166" cy="125" r="18" fill="#263238"/>
+                    <circle cx="166" cy="125" r="10" fill="#BDBDBD"/>
+                    <circle cx="34" cy="125" r="18" fill="#263238"/>
+                    <circle cx="34" cy="125" r="10" fill="#BDBDBD"/>
+                </svg>
+                <span class="brand-text">MultiCar</span>
+            </a>
+        </div>
+        <nav class="main-nav" aria-label="Menu principal">
+            <ul>
+                <li><a href="#fabricantes" id="bt-fabricantes">Fabricantes</a></li>
+                <li><a href="#modelos" id="bt-modelos">Modelos</a></li>
+                <li><a href="#veiculos" id="bt-veiculos">Veiculos</a></li>
+            </ul>
+        </nav>
+        <div class="actions">
+            <button class="btn primary">Login</button>
+            <button class="btn outline">Registrar</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="fabricantes" class="section" style="display: none;">
+            <h2>Fabricantes</h2>
+            <p>Conteudo sobre fabricantes de automoveis.</p>
+        </section>
+
+        <section id="modelos" class="section" style="display: none;">
+            <h2>Modelos</h2>
+            <p>Conteudo sobre modelos de automoveis.</p>
+        </section>
+
+        <section id="veiculos" class="section" style="display: none;">
+            <h2>Veiculos</h2>
+            <p>Conteudo sobre veiculos disponiveis.</p>
+        </section>
+    </main>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const navLinks = document.querySelectorAll('.main-nav a');
+        const sections = document.querySelectorAll('main .section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                // Oculta todas as seções
+                sections.forEach(section => {
+                    section.style.display = 'none';
+                });
+
+                // Mostra a seção correspondente
+                const targetId = this.getAttribute('href'); // ex: #fabricantes
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.style.display = 'block';
+                }
+            });
+        });
+    });
+</script>
+</html>

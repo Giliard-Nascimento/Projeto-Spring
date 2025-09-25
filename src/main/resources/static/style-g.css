@@ -1,0 +1,23 @@
+*{
+    margin: 0px;
+}
+
+header{
+    background-color:beige;
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    padding:20px 10px;
+    
+}
+
+div{
+    
+    width: 300px;
+    text-align: center;
+    height: 40px;
+    padding-top: 20px;
+    
+  
+
+}
