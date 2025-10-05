@@ -50,6 +50,7 @@
         <section id="fabricantes" class="section" style="display: none;">
             <h2>Fabricantes</h2>
             <p>Conteudo sobre fabricantes de automoveis.</p>
+
         </section>
 
         <section id="modelos" class="section" style="display: none;">
@@ -70,12 +71,43 @@
         });
    }
 
+  
+
 
     document.getElementById('bt-fabricantes').addEventListener('click', function(event) {
           event.preventDefault();
           limparSections();
           document.querySelector('#fabricantes').style.display = 'block';
+
+        const dadosFabricantes = [
+            {ID: 1, Nome: "Toyota", Pais: "Japão"},
+            {ID: 2, Nome: "Ford", Pais: "EUA"},
+            {ID: 3, Nome: "Volkswagen", Pais: "Alemanha"},
+            {ID: 4, Nome: "Hyunday", Pais: "Coreia do Sul"},
+            {ID: 5, Nome: "Fiat", Pais: "Italia"}
+
+        ];
+
+
+        const anexarConteudo = function(sectionId, novoElemento) {
+    const container = document.querySelector(sectionId);
+    
+    // 1. Limpa todas as tabelas (e outros elementos gerados)
+    // Usamos querySelectorAll para pegar todos os filhos que são 'table'
+    container.querySelectorAll('table').forEach(tabela => tabela.remove());
+    // Se você estiver adicionando <p> ou <ul>, precisaria limpar eles aqui também.
+
+    // 2. Anexa o novo elemento (sua nova tabela)
+    container.appendChild(novoElemento);
+}
+
+            anexarConteudo('#fabricantes', criarTabela(dadosFabricantes));  
+
+        
     });
+
+
+    
 
 
     document.getElementById('bt-modelos').addEventListener('click', function(event) {
@@ -87,6 +119,44 @@
           limparSections();
           document.querySelector('#veiculos').style.display = 'block';
     });
+
+
+    const criarTabela = function(dados) {
+
+        const tabela = document.createElement("table");
+        const thead = document.createElement("thead");
+        const tbody = document.createElement("tbody");
+
+
+
+        const cabecalho= Object.keys(dados[0]);
+        const tr = document.createElement("tr");
+        cabecalho.forEach(function(campo){
+            const th = document.createElement("th");
+            th.textContent = campo;
+            tr.appendChild(th);
+        });
+        thead.appendChild(tr);
+        tabela.appendChild(thead);
+
+
+
+        dados.forEach(function(item){
+            const tr = document.createElement("tr");
+            cabecalho.forEach(function(campo){
+                const td = document.createElement("td");
+                td.textContent = item[campo];
+                tr.appendChild(td);
+            });
+            tbody.appendChild(tr);
+            
+        });
+
+        tabela.appendChild(tbody);
+
+        return tabela;
+
+    }
     
 </script>
 </html>
