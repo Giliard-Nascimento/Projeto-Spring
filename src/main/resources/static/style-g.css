@@ -1,23 +1,156 @@
-*{
-    margin: 0px;
+/* --- Reset Básico e Fontes --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Garante que padding e borda não aumentem o tamanho total dos elementos */
 }
 
-header{
-    background-color:beige;
-    height: 150px;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f9; /* Fundo leve para destaque */
+    color: #333;
+}
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    color: #0d47a1;
+    border-bottom: 2px solid #0d47a1;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+/* --- 2. Estilos do Cabeçalho (Header) --- */
+.site-header {
+    /* Base do seu estilo, mas aprimorado */
+    background-color: #ffffff; /* Fundo branco para ser mais limpo */
     display: flex;
     justify-content: space-between;
-    padding:20px 10px;
-    
+    align-items: center;
+    padding: 10px 20px;
+    height: auto; /* Deixa a altura ser definida pelo conteúdo */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
-div{
-    
-    width: 300px;
-    text-align: center;
-    height: 40px;
-    padding-top: 20px;
-    
-  
+.brand {
+    /* Estilo para a div que contém a logo e o nome MultiCar */
+    display: flex;
+    align-items: center;
+    width: auto; /* Remove a largura fixa para evitar problemas */
+    height: auto;
+    padding-top: 0;
+}
 
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #0d47a1;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.brand-text {
+    margin-left: 5px;
+}
+
+/* Navegação */
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.main-nav li a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    display: block;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.main-nav li a:hover {
+    color: #0d47a1;
+    background-color: #e3f2fd;
+    border-radius: 4px;
+}
+
+/* Botões de Ação */
+.actions {
+    width: auto;
+    display: flex;
+    gap: 10px; /* Espaçamento entre os botões */
+    padding-top: 0;
+}
+
+.actions .btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.actions .btn.primary {
+    background-color: #0d47a1;
+    color: white;
+}
+
+.actions .btn.outline {
+    background-color: transparent;
+    border: 1px solid #0d47a1;
+    color: #0d47a1;
+}
+
+/* --- 3. Estilos da Tabela (O Ponto Principal) 🚀 --- */
+table {
+    width: 100%;
+    border-collapse: collapse; 
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Sombra suave */
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden; 
+}
+
+/* Estilo do Cabeçalho da Tabela */
+table thead th {
+    background-color: #0d47a1; /* Azul da logo MultiCar */
+    color: white;
+    font-weight: bold;
+    padding: 15px 12px;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+}
+
+/* Estilo das Células de Dados */
+table tbody td {
+    padding: 12px 12px;
+    border-bottom: 1px solid #e0e0e0; /* Linha divisória sutil */
+    font-size: 14px;
+    vertical-align: top;
+}
+
+/* Efeito Zebrado (Alternando as cores das linhas) */
+table tbody tr:nth-child(even) {
+    background-color: #f7f9fb; /* Cinza bem claro */
+}
+
+/* Efeito Hover (Ao passar o mouse) */
+table tbody tr:hover {
+    background-color: #e8f4ff; /* Azul claro para destaque */
+    cursor: pointer;
+}
+
+/* Responsividade (Permite rolagem horizontal em telas pequenas) */
+.section {
+    overflow-x: auto;
 }

@@ -63,30 +63,5 @@
         </section>
     </main>
 </body>
-<script>
-   const limparSections = function() {
-        document.querySelectorAll('.section').forEach(function(section) {
-            section.style.display = 'none';
-        });
-   }
-
-
-    document.getElementById('bt-fabricantes').addEventListener('click', function(event) {
-          event.preventDefault();
-          limparSections();
-          document.querySelector('#fabricantes').style.display = 'block';
-    });
-
-
-    document.getElementById('bt-modelos').addEventListener('click', function(event) {
-          limparSections();
-          document.querySelector('#modelos').style.display = 'block';
-    });
-
-    document.getElementById('bt-veiculos').addEventListener('click', function(event) {
-          limparSections();
-          document.querySelector('#veiculos').style.display = 'block';
-    });
-    
-</script>
+<script src="script.js"></script>
 </html>
