@@ -49,8 +49,6 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f7fa; color: #
  display: none;
 }
 
-
-/* --- 1. Estilização do Conteúdo Principal --- */
 main {
     padding: 30px 40px;
     max-width: 1200px;
@@ -65,54 +63,51 @@ main {
     font-weight: 600;
 }
 
-/* --- 2. Estilos da Tabela (Foco Principal) --- */
 table {
     width: 80%;
-    border-collapse: collapse; /* Remove o espaçamento duplo das bordas */
-    margin: 20px auto 0; /* Centraliza a tabela horizontalmente */
-    box-shadow: var(--shadow-md); /* Sombra suave para "flutuar" */
+    border-collapse: collapse;
+    margin: 20px auto 0;
+    box-shadow: var(--shadow-md);
     background-color: #ffffff;
     border-radius: var(--radius-md);
-    overflow: hidden; /* Garante que o border-radius funcione */
+    overflow: hidden;
     text-align: left;
 }
 
-/* Estilo do Cabeçalho da Tabela */
+
 table thead th {
-    background-color: var(--brand-dark); /* Fundo escuro para destaque */
+    background-color: var(--brand-dark);
     color: #ffffff;
     font-weight: 600;
     padding: 16px 12px;
     text-transform: uppercase;
     font-size: 0.85rem;
     letter-spacing: 0.5px;
-    border-bottom: 2px solid var(--brand-mid); /* Linha de destaque */
+    border-bottom: 2px solid var(--brand-mid);
 }
 
 /* Estilo das Células de Dados */
 table tbody td {
     padding: 12px 12px;
-    border-bottom: 1px solid var(--border-color); /* Linha divisória sutil */
+    border-bottom: 1px solid var(--border-color);
     font-size: 0.9rem;
     vertical-align: middle;
 }
 
-/* Efeito Zebrado (Alternando as cores das linhas) */
+
 table tbody tr:nth-child(even) {
-    background-color: #fcfcfc; /* Cinza bem claro */
+    background-color: #fcfcfc;
 }
 
-/* Efeito Hover (Ao passar o mouse) */
+
 table tbody tr:hover {
-    background-color: var(--brand-accent-soft); /* Cor suave de destaque ao passar o mouse */
+    background-color: var(--brand-accent-soft);
     cursor: pointer;
-    transform: translateY(-1px); /* Efeito sutil de elevação */
+    transform: translateY(-1px);
     transition: background-color 0.2s, transform 0.2s;
 }
 
-/* Responsividade: Envolve a tabela em rolagem horizontal em telas pequenas */
-/* NOTE: O seu HTML precisa envolver a tabela gerada por JS em uma div para isso */
-/* Como você já tem a classe .section, vamos aplicar o overflow nela: */
+
 .section {
     overflow-x: auto;
     /* Certifique-se de que o display: none seja sobrescrito pelo JS */
@@ -143,4 +138,23 @@ table tbody tr:hover {
  .actions { justify-content: center; }
  .main-nav ul { flex-wrap: wrap; gap: 12px; }
  .site-header { padding: 10px 16px; }
+ table thead th {
+    background-color: var(--brand-dark);
+    color: #ffffff;
+    font-weight: 500;
+    padding: 11px 7px;
+    text-transform: uppercase;
+    font-size: 0.55rem;
+    letter-spacing: 0.3px;
+    border-bottom: 2px solid var(--brand-mid);
+}
+
+
+
+ table tbody td {
+    padding: 5px 5px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.7rem;
+    vertical-align: middle;
+}
 }
