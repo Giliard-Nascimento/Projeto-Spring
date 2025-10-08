@@ -1,11 +1,11 @@
-async function getData(){
-    const url = "http://localhost:8080/api/fabricantes";
+async function getData(url){
+   
 
     try {
 
         const response = await fetch(url);
         if (!response.ok) {
-            throw new Error('Erro na requisição: ' + response.status);
+            throw new Error("Erro na requisição:" + response.status);
         }
 
         const dadosFabricantes = await response.json();

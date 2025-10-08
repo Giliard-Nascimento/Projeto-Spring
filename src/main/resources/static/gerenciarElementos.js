@@ -1,8 +1,8 @@
-const criarTabela = function(dados){
+const criarTabela = function(dados, titulo = "Tabela", classe){
 
-    document.querySelectorAll('table').forEach(function(tabela){
-        tabela.remove();
-    });
+    // document.querySelectorAll('table').forEach(function(tabela){
+    //     tabela.remove();
+    // });
 
 
     const tabela = document.createElement('table');
@@ -12,12 +12,26 @@ const criarTabela = function(dados){
 
     // Criar cabeçalho
     const cabecalho = Object.keys(dados[0]);
+    const trTitle = document.createElement("tr");
+    const th = document.createElement("th");
+    th.textContent = titulo;
+    th.colSpan = cabecalho.length;
+    trTitle.appendChild(th);
+    thead.appendChild(trTitle);
+
+
+
+
     const tr = document.createElement('tr');
     cabecalho.forEach(function(campo) {
         const th = document.createElement('th');
         th.textContent = campo;
         tr.appendChild(th);
     });
+
+
+    tabela.classList.add(classe);
+
     thead.appendChild(tr);
     tabela.appendChild(thead);
 
@@ -50,4 +64,12 @@ const setShowHide = function(esconder, elemento) {
     document.querySelectorAll(elemento).forEach(function(section) {
         section.style.display =  esconder ? "none" : "block";
     });
+}
+
+const setRemoverElementos = function(seletor){
+    document.querySelectorAll(seletor).forEach(function(elemento){
+        elemento.remove();
+    });
+
+
 }

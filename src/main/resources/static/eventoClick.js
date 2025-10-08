@@ -1,25 +1,20 @@
-document.getElementById('bt-fabricantes').addEventListener('click', function(event) {
+document.getElementById("bt-fabricantes").addEventListener("click", async function(event) {
     setShowHide(true, ".section");
-    
-    document.querySelector('#fabricantes').style.display = 'block';
+     const secaoFabricantes = document.querySelector("#fabricantes");
+     secaoFabricantes.style.display = "block";
+
+     // Limpa o conteúdo anterior da seção (exceto o título e parágrafo)
+     setRemoverElementos(".tabela-dados");
+
+     const dadosFabricantes = await getData("http://localhost:8080/api/fabricantes");
+     secaoFabricantes.appendChild(criarTabela(dadosFabricantes, "Fabricante", "tabela-dados"));
+ });  
 
 
-    const dadosFabricantes = [
-        { ID: 1, Nome: 'Toyota', Pais: 'Japao' },
-        { ID: 2, Nome: 'Ford', Pais: 'EUA' },
-        { ID: 3, Nome: 'BMW', Pais: 'Alemanha' },
-          { ID: 4, Nome: 'Hyundai', Pais: 'Coreia do Sul' },
-          { ID: 5, Nome: 'Fiat', Pais: 'Italia' }
-
-    ];
-
-    document.querySelector('#fabricantes').appendChild(criarTabela(dadosFabricantes));
-});
-
-
-document.getElementById('bt-modelos').addEventListener('click', function(event) {
+document.getElementById('bt-modelos').addEventListener('click', async function(event) {
     setShowHide(true, ".section");
     document.querySelector('#modelos').style.display = 'block';
+    setRemoverElementos(".tabela-dados");
 
 
     const dadosModelos = [
@@ -30,7 +25,7 @@ document.getElementById('bt-modelos').addEventListener('click', function(event) 
         { ID: 5, Modelo: 'Punto', Id_Fabricante: 5 }
     ];
 
-      document.querySelector('#modelos').appendChild(criarTabela(dadosModelos));
+      document.querySelector('#modelos').appendChild(criarTabela(dadosModelos, "Fabricante", "tabela-dados"));
 
 
 });
@@ -38,6 +33,7 @@ document.getElementById('bt-modelos').addEventListener('click', function(event) 
 document.getElementById('bt-veiculos').addEventListener('click', function(event) {
     setShowHide(true, ".section");
     document.querySelector('#veiculos').style.display = 'block';
+    setRemoverElementos(".tabela-dados");
 
 
     const dadosVeiculos = [
@@ -49,7 +45,7 @@ document.getElementById('bt-veiculos').addEventListener('click', function(event)
         
     ];
 
-      document.querySelector('#veiculos').appendChild(criarTabela(dadosVeiculos));
+      document.querySelector('#veiculos').appendChild(criarTabela(dadosVeiculos, "Fabricante", "tabela-dados"));
 
 
 
