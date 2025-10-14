@@ -11,21 +11,14 @@ document.getElementById("bt-fabricantes").addEventListener("click", async functi
  });  
 
 
-document.getElementById('bt-modelos').addEventListener('click', async function(event) {
+document.getElementById("bt-modelos").addEventListener("click", async function(event) {
     setShowHide(true, ".section");
-    document.querySelector('#modelos').style.display = 'block';
     setRemoverElementos(".tabela-dados");
+    document.querySelector('#modelos').style.display = "block";
+    const dadosModelo = await getData("http://localhost:8080/api/modelos");
 
-
-    const dadosModelos = [
-        { ID: 1, Modelo: 'Corolla', Id_Fabricante: 1 },
-        { ID: 2, Modelo: 'Mustang', Id_Fabricante: 2 },
-        { ID: 3, Modelo: 'X5', Id_Fabricante: 3 },
-        { ID: 4, Modelo: 'Elantra', Id_Fabricante: 4 },
-        { ID: 5, Modelo: 'Punto', Id_Fabricante: 5 }
-    ];
-
-      document.querySelector('#modelos').appendChild(criarTabela(dadosModelos, "Fabricante", "tabela-dados"));
+   
+      document.querySelector("#modelos").appendChild(criarTabelaModelo(dadosModelo));
 
 
 });
