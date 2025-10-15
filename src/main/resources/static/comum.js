@@ -5,13 +5,15 @@ async function getData(url){
 
         const response = await fetch(url);
         if (!response.ok) {
-            throw new Error("Erro na requisição:" + response.status);
+            //throw new Error("Erro na requisição:" + response.status);
+            return response;
         }
 
         const dadosFabricantes = await response.json();
         return dadosFabricantes;
 
         } catch (error) {
-            console.error('Erro ao buscar dados:', error);
+           // console.error('Erro ao buscar dados:', error);
+           return error;
         }
 }

@@ -7,6 +7,13 @@ document.getElementById("bt-fabricantes").addEventListener("click", async functi
      setRemoverElementos(".tabela-dados");
 
      const dadosFabricantes = await getData("http://localhost:8080/api/fabricantes");
+     if (dadosFabricantes.ok === false) {
+      document.querySelector("#fabricantes").innerHTML = "<p>Erro ao carregar os dados do fabricante!!!</p>";
+      document.querySelector("#fabricantes").style.color = "red";
+      return;
+
+    }
+
      secaoFabricantes.appendChild(criarTabela(dadosFabricantes, "Fabricante", "tabela-dados"));
  });  
 
@@ -16,29 +23,33 @@ document.getElementById("bt-modelos").addEventListener("click", async function(e
     setRemoverElementos(".tabela-dados");
     document.querySelector('#modelos').style.display = "block";
     const dadosModelo = await getData("http://localhost:8080/api/modelos");
+    if (dadosModelo.ok === false) {
+      document.querySelector("#modelos").innerHTML = "<p>Erro ao carregar os dados do modelo!!!</p>";
+      document.querySelector("#modelos").style.color = "red";
+      return;
 
+    }
    
       document.querySelector("#modelos").appendChild(criarTabelaModelo(dadosModelo));
 
 
 });
 
-document.getElementById('bt-veiculos').addEventListener('click', function(event) {
+document.getElementById('bt-veiculos').addEventListener('click',async function(event) {
     setShowHide(true, ".section");
-    document.querySelector('#veiculos').style.display = 'block';
     setRemoverElementos(".tabela-dados");
+    document.querySelector('#veiculos').style.display = 'block';
+    const dadosVeiculos = await getData("http://localhost:8080/api/veiculos");
+
+    if (dadosVeiculos.ok === false) {
+      document.querySelector("#veiculos").innerHTML = "<p>Erro ao carregar os dados do veículo!!!</p>";
+      document.querySelector("#veiculos").style.color = "red";
+      return;
+
+    }
 
 
-    const dadosVeiculos = [
-        { ID: 1, Modelo_id: 1, Ano:2020, valor:30000, placa:'ABC-1234', data_cadastro: '30/09/2025', cor: 'Branco', Descricao: '0km, espaçoso, confortável' },
-        { ID: 2, Modelo_id: 2, Ano:2019, valor:55000, placa:'DEF-5678', data_cadastro: '15/08/2025', cor: 'Vermelho', Descricao: 'Esportivo, potente, design moderno' },
-        { ID: 3, Modelo_id: 3, Ano:2021, valor:80000, placa:'GHI-9012', data_cadastro: '20/07/2025', cor: 'Preto', Descricao: 'Luxuoso, tecnologia avançada, seguro' },
-        { ID: 4, Modelo_id: 4, Ano:2018, valor:25000, placa:'JKL-3456', data_cadastro: '10/06/2025', cor: 'Azul', Descricao: 'Econômico, prático, fácil de dirigir' },
-        { ID: 5, Modelo_id: 5, Ano:2017, valor:20000, placa:'MNO-7890', data_cadastro: '05/05/2025', cor: 'Cinza', Descricao: 'Compacto, ágil, ideal para cidade' }
-        
-    ];
-
-      document.querySelector('#veiculos').appendChild(criarTabela(dadosVeiculos, "Fabricante", "tabela-dados"));
+      document.querySelector('#veiculos').appendChild(criarTabelaVeiculo(dadosVeiculos));
 
 
 
