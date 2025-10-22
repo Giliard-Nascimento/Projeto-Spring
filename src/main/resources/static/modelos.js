@@ -45,6 +45,16 @@ const criarTabelaModelo = function(dados) {
         tdPaisOrigem.textContent = item.fabricante.paisOrigem;
         tr.appendChild(tdPaisOrigem);
 
+        const Deletar = document.createElement("td");
+        Deletar.innerHTML = '<button class= "btn delete">Deletar</button>';
+        Deletar.addEventListener("click", async function() {
+            setDeletar("http://localhost:8080/api/modelos/" + item.id);
+
+        });
+
+        tr.appendChild(Deletar);
+        
+
 
         tbody.appendChild(tr);
 

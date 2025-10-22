@@ -58,12 +58,18 @@ public class ModeloService {
 
 
     }
-
+    @Transactional
     public void deletar(Long id){
         if(!repository.existsById(id)){
             throw new RuntimeException("Modelo não encontrado"); 
 
         }
+
+        if (repository.temVeiculosAssociados(id)) {
+            throw new RuntimeException("Não é possível deletar o modelo, existem veículos associados a ele.");
+            
+        }
+
             repository.deleteById(id);
     }
         

@@ -15,7 +15,7 @@ const criarTabela = function(dados, titulo = "Tabela", classe){
     const trTitle = document.createElement("tr");
     const th = document.createElement("th");
     th.textContent = titulo;
-    th.colSpan = cabecalho.length;
+    th.colSpan = cabecalho.length + 1;
     trTitle.appendChild(th);
     thead.appendChild(trTitle);
 
@@ -43,6 +43,21 @@ const criarTabela = function(dados, titulo = "Tabela", classe){
             td.textContent = item[campo];
             tr.appendChild(td);
         });
+
+        const Deletar = document.createElement("td");
+        Deletar.innerHTML = '<button class= "btn delete">Deletar</button>';
+        Deletar.addEventListener("click", async function() {
+         const dadosResposta = await  setDeletar("http://localhost:8080/api/fabricantes/" + item.id);
+
+            if(dadosResposta.status === 204){
+                this.parentElement.remove();
+            }
+
+        });
+
+        tr.appendChild(Deletar);
+
+
         tbody.appendChild(tr);
     });
     tabela.appendChild(tbody);

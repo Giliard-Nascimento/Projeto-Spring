@@ -63,6 +63,21 @@ const criarTabelaVeiculo = function(dados){
         tdDescricao.textContent = item.descricao;
         tr.appendChild(tdDescricao);
 
+        const Deletar = document.createElement("td");
+        Deletar.innerHTML = '<button class= "btn delete">Deletar</button>';
+        Deletar.addEventListener("click", async function() {
+         const dadosResposta = await  setDeletar("http://localhost:8080/api/veiculos/" + item.id);
+
+            if(dadosResposta.status === 204){
+                this.parentElement.remove();
+            }else{
+                alert("Erro ao deletar o veículo");
+            }
+
+        });
+
+        tr.appendChild(Deletar);
+
         tbody.appendChild(tr);
 
 

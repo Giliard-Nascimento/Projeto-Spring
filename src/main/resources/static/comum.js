@@ -17,3 +17,21 @@ async function getData(url){
            return error;
         }
 }
+
+async function setDeletar(url){
+   
+
+    try {
+
+        const response = await fetch(url, { method: 'DELETE'});
+        if (!response.ok) {
+            throw new Error("Erro na requisição:" + response.status);
+        }
+
+        const dadosResposta = await response.json();
+        return dadosResposta;
+
+        }catch (error) {
+          return error;
+        }
+}
